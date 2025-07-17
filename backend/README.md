@@ -42,11 +42,11 @@ It supports creating, updating, deleting, and retrieving tasks.
 
 2. Install dependencies:
 
-npm install
+   npm install
 
 3. Start the server:
 
-npm start
+   npm start
 
 4. Server runs at: http://localhost:3000
 
@@ -55,29 +55,27 @@ npm start
 
 1. Build the Docker image:
 
-docker build -t todo-api .
+   docker build -t todo-api .
 
 2. Run the container
 
-docker run -p 3000:3000 todo-api
+   docker run -p 3000:3000 todo-api
 
 The API will now be running at http://localhost:3000
 
 
- API Endpoints Summary
+API Endpoints Summary
 ✅ Create a Task
 
 POST /tasks
 Creates a new task with a description and optional status.
 Body:
-
 {
   "text": "Example task",
   "status": "in progress" 
 }
 
 Response:
-
 {
   "id": 1,
   "text": "Example task",
@@ -85,35 +83,26 @@ Response:
 }
 
 📋 Get All Tasks
-
 GET /tasks
 Retrieves a list of all tasks.
-Optional Query Parameters:
 
-    status — Filter by "in progress" or "completed"
+🔍 Check Task Status via GET /tasks
 
-Response:
+In browser or REST client (like Postman):
 
-[
-  {
-    "id": 1,
-    "text": "Example task",
-    "status": "completed"
-  }
-]
+http://localhost:3000/tasks?status=completed or http://localhost:3000/tasks?status=in progress
+
 
 🔄 Update Task Status
 
 PATCH /tasks/:id
 Updates the status of a specific task.
 Body:
-
 {
   "status": "completed"
 }
 
 Response:
-
 {
   "id": 1,
   "text": "Example task",
@@ -121,14 +110,7 @@ Response:
 }
 
 ❌ Delete a Task
-
 DELETE /tasks/:id
 Deletes a specific task.
 Response:
-message: 'Task deleted'
-
-🔍 Check Task Status via GET /tasks
-
-In browser or REST client (like Postman):
-
-http://localhost:3000/tasks?status=completed
+  {message: 'Task deleted'}
